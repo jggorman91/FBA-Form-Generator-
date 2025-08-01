@@ -73,60 +73,33 @@ function generateForm() {
         return;
     }
 
-    // 3. Build the form text
-    let formText = `
-==================================================
-        FBA DIRECT OBSERVATION FORM
-==================================================
+    // 3. Build the form text as a script for Google/Microsoft Forms
+    let formText = `FORM TITLE: FBA Direct Observation Form\n\n`;
+    formText += `FORM DESCRIPTION: This form is used to collect direct observation data (ABC, frequency, duration) to help determine the function of a student's behavior.\n\n`;
+    formText += `--------------------------------------------------\n\n`;
 
-PART 1: BASIC INFORMATION
---------------------------------------------------
-Student Name: _________________________
-Observer Name: ________________________
-Date: _________________ Time: __________
-Location/Activity: ${LOCATIONS.join(', ')}, Other: ________
+    formText += `--- SECTION: Basic Information ---\n\n`;
+    formText += `1. Question: Student Name\n   - Type: Short Answer\n\n`;
+    formText += `2. Question: Observer Name\n   - Type: Short Answer\n\n`;
+    formText += `3. Question: Date of Observation\n   - Type: Date\n\n`;
+    formText += `4. Question: Time of Observation\n   - Type: Short Answer\n\n`;
+    formText += `5. Question: Location/Activity\n   - Type: Multiple Choice\n   - Options: ${LOCATIONS.join(', ')}, Other\n\n`;
 
-PART 2: BEHAVIOR
---------------------------------------------------
-Observed Behavior (Select one):
-`;
-    allBehaviors.forEach(b => {
-        formText += `  ( ) ${b}\n`;
-    });
+    formText += `--- SECTION: Behavior Details ---\n\n`;
+    formText += `6. Question: Observed Behavior\n   - Type: Multiple Choice\n   - Options: ${allBehaviors.join(', ')}\n\n`;
+    formText += `7. Question: Behavior Description (Objective & Observable)\n   - Type: Paragraph\n\n`;
 
-    formText += `
-Behavior Description (Objective & Observable):
-_________________________________________________________________
-_________________________________________________________________
+    formText += `--- SECTION: A-B-C Data ---\n\n`;
+    formText += `8. Question: Antecedent (What happened BEFORE?)\n   - Type: Checkboxes (Select all that apply)\n   - Options: ${ANTECEDENTS.join(', ')}, Other\n\n`;
+    formText += `9. Question: Consequence (What happened AFTER?)\n   - Type: Checkboxes (Select all that apply)\n   - Options: ${CONSEQUENCES.join(', ')}, Other\n\n`;
 
-PART 3: A-B-C DATA
---------------------------------------------------
-Antecedent (What happened BEFORE? Check all that apply):
-`;
-    ANTECEDENTS.forEach(a => {
-        formText += `  [ ] ${a}\n`;
-    });
-    formText += `  [ ] Other: __________________\n`;
+    formText += `--- SECTION: Direct Measurement ---\n\n`;
+    formText += `10. Question: Frequency (Count)\n    - Type: Short Answer (Number)\n\n`;
+    formText += `11. Question: Duration (in minutes)\n    - Type: Short Answer (Number)\n\n`;
+    
+    formText += `--- SECTION: Additional Notes ---\n\n`;
+    formText += `12. Question: Additional Notes\n    - Type: Paragraph\n\n`;
 
-    formText += `\nConsequence (What happened AFTER? Check all that apply):\n`;
-    CONSEQUENCES.forEach(c => {
-        formText += `  [ ] ${c}\n`;
-    });
-    formText += `  [ ] Other: __________________\n`;
-
-    formText += `
-PART 4: DIRECT MEASUREMENT
---------------------------------------------------
-Frequency (Count): ________
-Duration (in minutes): ________
-
-PART 5: ADDITIONAL NOTES
---------------------------------------------------
-_________________________________________________________________
-_________________________________________________________________
-
-==================================================
-`;
     // 4. Display the output
     const outputSection = document.getElementById('output-section');
     const formOutputTextarea = document.getElementById('form-output');
