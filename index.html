@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FBA Form Generator</title>
+    
+    <!-- Link to Tailwind CSS framework -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Link to your custom stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-slate-100 text-slate-800">
+
+    <div class="container mx-auto p-4 sm:p-8 max-w-4xl">
+        
+        <!-- Header -->
+        <header class="bg-slate-800 text-white p-6 rounded-xl shadow-lg mb-8">
+            <h1 class="text-3xl font-bold">FBA Data Form Generator</h1>
+            <p class="text-slate-300 mt-1">Create a printable FBA data collection sheet in seconds.</p>
+        </header>
+
+        <!-- Main Content -->
+        <main class="bg-white p-6 sm:p-8 rounded-xl shadow-lg border border-slate-200">
+            
+            <!-- Step 1: Behavior Selection -->
+            <div id="step1">
+                <h2 class="text-2xl font-semibold border-b pb-3 mb-4">Step 1: Select Behaviors</h2>
+                <div id="behavior-list" class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
+                    <!-- Checkboxes will be inserted here by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Step 2: Custom Behavior -->
+            <div id="step2">
+                <h2 class="text-2xl font-semibold border-b pb-3 mb-4 mt-6">Step 2: Add Custom Behavior</h2>
+                <input type="text" id="custom-behavior" placeholder="e.g., Inappropriate vocalizations" class="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-teal-500">
+            </div>
+
+            <!-- Step 3: Generate Button -->
+            <div id="step3" class="mt-8 text-center">
+                <button onclick="generateForm()" class="bg-teal-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-teal-700 transition-transform transform hover:scale-105 shadow-md">
+                    Generate Form
+                </button>
+            </div>
+
+            <!-- Step 4: Output -->
+            <div id="output-section" class="mt-8 hidden">
+                <h2 class="text-2xl font-semibold border-b pb-3 mb-4">Step 4: Copy Your Form</h2>
+                <p class="mb-4 text-slate-600">Your form is ready. Copy the text below and paste it into a text editor or word processor to print.</p>
+                <textarea id="form-output" class="w-full h-96 p-4 bg-slate-50 border border-slate-300 rounded-lg text-sm" readonly></textarea>
+                <div class="text-center mt-4">
+                    <button onclick="copyToClipboard()" class="bg-slate-700 text-white font-bold py-2 px-6 rounded-lg hover:bg-slate-800 transition">
+                        Copy to Clipboard
+                    </button>
+                    <p id="copy-success" class="text-green-600 mt-2 h-4"></p>
+                </div>
+            </div>
+        </main>
+        
+        <footer class="text-center p-4 mt-8 text-sm text-slate-500">
+            <p>Based on best practices for Functional Behavioral Assessment (FBA).</p>
+        </footer>
+    </div>
+
+    <!-- Link to your external JavaScript file -->
+    <script src="script.js"></script>
+</body>
+</html>

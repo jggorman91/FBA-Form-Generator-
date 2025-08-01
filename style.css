@@ -1,0 +1,25 @@
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* Apply the font to the body */
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+/* Custom styles for better visual feedback on checkboxes */
+.behavior-checkbox:checked + label {
+    background-color: #14b8a6; /* teal-500 */
+    color: white;
+    border-color: #0f766e; /* teal-700 */
+}
+
+.behavior-checkbox:checked + label:hover {
+    background-color: #0d9488; /* teal-600 */
+}
+
+/* Styling for the output textarea */
+#form-output {
+    white-space: pre-wrap; /* Allows text to wrap */
+    word-wrap: break-word; /* Breaks long words */
+    font-family: 'Courier New', Courier, monospace;
+}
